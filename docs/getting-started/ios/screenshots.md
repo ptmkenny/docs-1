@@ -61,18 +61,18 @@ To jump-start your UI tests, you can use the UI Test recorder, which you can sta
 
 ### Setting Up _snapshot_
 
-1. Create a new UI Test target in your Xcode project (See the top part of [this article](https://krausefx.com/blog/run-xcode-7-ui-tests-from-the-command-line))
-1. Run `fastlane snapshot init` in your project folder
-1. Add the `./SnapshotHelper.swift` file to your UI Test target (You can move the file anywhere you want)
-1. Add a new Xcode scheme for the newly created UI Test target
-1. Edit the scheme
-1. In the list on the left click "Build", and enable the checkbox under the "Run" column for your target.
-1. Enable the `Shared` box of the newly created scheme
+1. In your XCode project, go to `File` -> `New` -> `Target`, then select `UI Testing Bundle`.  Fill in the required info, and make sure that `Target to be tested` is your app.
+1. Run `fastlane snapshot init` in your project folder.
+1. Add the `./SnapshotHelper.swift` file to your UI Test target (You can move the file anywhere you want).
+1. Add a new Xcode scheme for the newly created UI Test target. (From the menu, `Product` -> `Scheme` -> `New Scheme`.)
+1. Edit the scheme. (From the menu, `Product` -> `Scheme` -> `Edit Scheme`).
+1. In the list on the left, click "Build", and enable the checkbox under the "Run" column for your target.
+1. Make sure the `Shared` box of the newly created scheme is enabled.
 1. (Objective C only) Add the bridging header to your test class.
   - `#import "MYUITests-Swift.h"`
   - The bridging header is named after your test target with -Swift.h appended.
-1. In your UI Test class, click the `Record` button on the bottom left and record your interaction
-1. To take a screenshot, call the following between interactions
+1. In your UI Test class, click the `Record` button in the bottom left and record your interaction.
+1. To take a screenshot, call the following between interactions.
   - Swift: `snapshot("01LoginScreen")`
   - Objective C: `[Snapshot snapshot:@"01LoginScreen" timeWaitingForIdle:10];`
 1. Add the following code to your `setUp()` method:
